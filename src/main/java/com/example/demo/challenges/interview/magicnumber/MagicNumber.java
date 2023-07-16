@@ -1,4 +1,4 @@
-package com.example.demo.challenges;
+package com.example.demo.challenges.interview.magicnumber;
 
 /**
  * Indian mathematician D.R. Kaprekar observed a very interesting property of number 6174.

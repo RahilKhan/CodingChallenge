@@ -1,4 +1,4 @@
-package com.example.demo.challenges;
+package com.example.demo.challenges.interview.magicnumber;
 
 import java.util.Arrays;
 
