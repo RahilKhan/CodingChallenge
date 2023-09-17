@@ -11,12 +11,30 @@ public class PrintEvenOddNum {
     private final int maxNumbers = 31;
 
     public static void main(String... args) {
+        PrintEvenOddNum printEvenOddNum = new PrintEvenOddNum();
+        printEvenOddNum.printNumbers();
+    }
+
+    public void printNumbers() {
         PrintEvenOddNum pnum = new PrintEvenOddNum();
         Runnable rEven = pnum::printEvenNum;
-        Runnable rOdd = pnum::printOddNum;
+//        Runnable rOdd = pnum::printOddNum;
 
         Thread t1 = new Thread(rEven);
-        Thread t2 = new Thread(rOdd);
+//        Thread t2 = new Thread(rOdd);
+        Thread t2 = new Thread(() ->{
+            while (number < maxNumbers) {
+                while (number % 2 == 0) {
+                    try {
+                        wait();
+                    } catch (InterruptedException ie) {
+                        ie.printStackTrace();
+                    }
+                }
+                System.out.println("ThreadOdd  :   " + number++);
+                notifyAll();
+            }
+        });
 
         t1.start();
         t2.start();
